@@ -54,7 +54,7 @@ Using the terminal/command line interface:
 
         Binding a Service to Your App
 
-        -   For the app to function correctly, you must create the service instance and bind the service instance while deploying the app. The **cf push** command will ask, "Create services for application?" Answer yes, then you will be presented with a list of services. Choose Company Text analytics service        and Names Text Analytics Service from this list. Below, you can see some screnshots of what this should look like when deploying from the command line.
+        -   For the app to function correctly, you must create the service instance and bind the service instance while deploying the app. The **cf push** command will ask, "Create services for application?" Answer yes, then you will be presented with a list of services. Choose Company Text analytics service and Names Text Analytics Service from this list. Below, you can see some screenshots of what this should look like when deploying from the command line.
 
 
         Here are some snapshots of how to deploy the app and create services required for the app: 
