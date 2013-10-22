@@ -35,7 +35,7 @@ Using the terminal/command line interface:
 
             To access the Twitter API you need the consumer keys and access tokens, so you must register the app with Twitter. You can register your app [here](https://dev.twitter.com/).
 
-            [More information on how to register the app with [Twitter](registerTwitter.md)
+            [More information on how to register the app with Twitter](registerTwitter.md)
 
         -   **Chart.js:**
             The graph is generated using the Chart.js library, which is under MIT license. The Chart.js library has been included with the app. The library is located in the public/javascripts folder under the node-app directory. 
