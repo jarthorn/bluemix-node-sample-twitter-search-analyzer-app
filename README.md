@@ -25,7 +25,7 @@ Using the terminal/command line interface:
 -   **Deploying the app:**
     -   **Download the app**
         - clone the current repository, i.e. 
-            **git clone http://xx.xx/somerepo.git** 
+            **git clone https://github.com/ibmjstart/bluemix-node-sample-twitter-search-analyzer-app.git** 
 
     -   **External and Public APIs:**
 
