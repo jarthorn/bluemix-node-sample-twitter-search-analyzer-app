@@ -29,7 +29,7 @@ Using the terminal/command line interface:
 
     -   **External and Public APIs:**
 
-        This app uses some external APIs. You need to register the app with Twitter and Klout to get the keys and tokens.
+        This app uses some external APIs. You need to register the app with Twitter to get the keys and tokens.
 
         -   **Twitter v1.1 API:**
 
