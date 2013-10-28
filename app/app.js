@@ -68,11 +68,11 @@ if(process.env.VCAP_SERVICES){
   var nameAnalyticsInfo;
 
   for (var svcName in services) {
-    if (svcName.match(/^Companies.*/)) {
+    if (svcName.match(/^[Cc]ompanies.*/)) {
       companyAnalyticsInfo = services[svcName][0]['credentials'];    
 
     }
-    if (svcName.match(/^Names.*/)) 
+    if (svcName.match(/^[Nn]ames.*/)) 
     {
       nameAnalyticsInfo = services[svcName][0]['credentials'];
     }
