@@ -17,7 +17,7 @@ The source for this app is at GitHub so, for example, if you are using the comma
 
         git clone https://github.com/ibmjstart/bluemix-node-sample-twitter-search-analyzer-app.git
 
-## Overview of the app ## 
+## Overview of the app ##
 
 This is a NodeJS app that uses the following cloud services:
 -   Company Text Analytics Service
