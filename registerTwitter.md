@@ -1,7 +1,7 @@
-How to register the app with Twitter:
-=====================================
+# How to register the app with Twitter: #
 
-### These are some of the steps and screen-shots to register your app with Twitter:
+
+## These are some of the steps and screen-shots to register your app with Twitter: ##
 
 -   You can register the app over [here](https://dev.twitter.com/). When you click on the link you are forwarded to Twitter's developer site. You need to Sign-in with your Twitter account. If you dont have the twitter account you can sign-up with twitter and get then login with the new account credentials. The Sign-in button is on the top right.
 
