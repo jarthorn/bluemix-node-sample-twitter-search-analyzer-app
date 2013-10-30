@@ -86,6 +86,8 @@ app.set('view engine', 'html');
 app.set('env', 'development');
 app.engine('html', hogan);
 
+
+app.use(express.favicon(path.join(__dirname, 'public/images/favicon.ico')));
 app.use(express.favicon());
 app.use(express.logger());
 app.use(express.bodyParser());
