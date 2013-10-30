@@ -99,7 +99,7 @@ exports.get = function (req, res) {
 };
 
 function extractNames(type, data, cb) {
-// query proper anayltics service to extract company or people names from supplied tweets
+// query proper analytics service to extract company or people names from supplied tweets
 
 
   // choose correct analytics service to hit
