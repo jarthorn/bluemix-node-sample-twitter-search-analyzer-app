@@ -69,16 +69,15 @@ if(process.env.VCAP_SERVICES){
 
   for (var svcName in services) {
     if (svcName.match(/^[Cc]ompanies.*/)) {
-      companyAnalyticsInfo = services[svcName][0]['credentials'];    
-
+      companyAnalyticsInfo = services[svcName][0]['credentials'];   
+      app.set('company_analytics_url', companyAnalyticsInfo['url']); 
     }
     if (svcName.match(/^[Nn]ames.*/)) 
     {
       nameAnalyticsInfo = services[svcName][0]['credentials'];
+      app.set('name_analytics_url', nameAnalyticsInfo['url']);
     }
   }
-  app.set('company_analytics_url', companyAnalyticsInfo['url']);
-  app.set('name_analytics_url', nameAnalyticsInfo['url']);
 }
 
 app.set('port', process.env.PORT || 3000);

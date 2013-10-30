@@ -47,5 +47,13 @@
  * GET home page.
  */
 exports.index = function (req, res) {
-  res.render('index.html', {Title: 'Twitter Search Analyzer'});
+
+  if(app.get('company_analytics_url') && app.get('name_analytics_url'))
+  {
+  	res.render('index.html', {Title: 'Twitter Search Analyzer'});
+  	return;
+  }
+
+  res.render('index.html', {Title: 'Twitter Search Analyzer', error: 'No service URL found. Make sure you have bound the correct services to your app.'});
+  
 };

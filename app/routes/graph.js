@@ -49,7 +49,12 @@ exports.get = function (req, res) {
 
 	// choose type of warning to display based upon result option
 	var noResultsWarning = req.query.option == 'companies' ? 'companies' : 'names';
+	
+	if(app.get('company_analytics_url') && app.get('name_analytics_url'))
+	{
+		res.render('graph.html', {keyword: encodeURIComponent(req.query.keyword), option: req.query.option, tableTitle: tableTitle, Title: 'Twitter Search Analyzer', noResults: noResultsWarning});
+	}
 
-
-	res.render('graph.html', {keyword: encodeURIComponent(req.query.keyword), option: req.query.option, tableTitle: tableTitle, Title: 'Twitter Search Analyzer', noResults: noResultsWarning});
+	res.render('graph.html', {keyword: encodeURIComponent(req.query.keyword), option: req.query.option, tableTitle: tableTitle, Title: 'Twitter Search Analyzer', noResults: noResultsWarning, 
+							  error: 'No service URL found. Make sure you have bound the correct services to your app.'});
 };
