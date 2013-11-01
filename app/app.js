@@ -60,22 +60,17 @@ app = express();
 
 
 // check if application is being run in cloud environment
-if(process.env.VCAP_SERVICES){
+if (process.env.VCAP_SERVICES) {
   // if application is running in cloud environment, get analytics service info
   //   and store it as an application variable
   var services = JSON.parse(process.env.VCAP_SERVICES);
-  var companyAnalyticsInfo;
-  var nameAnalyticsInfo;
 
   for (var svcName in services) {
     if (svcName.match(/^[Cc]ompanies.*/)) {
-      companyAnalyticsInfo = services[svcName][0]['credentials'];   
-      app.set('company_analytics_url', companyAnalyticsInfo['url']); 
+      app.set('company_analytics_url', services[svcName][0]['credentials']['url']); 
     }
-    if (svcName.match(/^[Nn]ames.*/)) 
-    {
-      nameAnalyticsInfo = services[svcName][0]['credentials'];
-      app.set('name_analytics_url', nameAnalyticsInfo['url']);
+    if (svcName.match(/^[Nn]ames.*/)) {
+      app.set('name_analytics_url', services[svcName][0]['credentials']['url']);
     }
   }
 }

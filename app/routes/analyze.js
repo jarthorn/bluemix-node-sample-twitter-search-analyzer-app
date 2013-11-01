@@ -53,30 +53,17 @@ exports.get = function (req, res) {
 //  companies or names and return JSON with that information
 
   // get twitter results
-	twitter.getResults(req.params.keyword, 100, 'recent', function (err, tweets) {
+	twitter.getResults(req.params.keyword, 100, 'recent', function (err, texts) {
     if (err) {
       console.log(err);
       return res.json(err);
     }
 
-    // store tweet text in form of array to be sent to 
-    //  text analytics service.
-    var messages = tweets.statuses;
-    var texts = new Array();
-    console.log("Messages:");
-    messages.forEach(function (msg) {
-      console.log(JSON.stringify(msg.text));
-      texts.push(JSON.stringify(msg.text));
-    });
-
     // check requested type of analytics to be done
-    var annotationType;
-
-    if(req.params.option == 'companies'){
-      annotationType=['com.ibm.langware.en.Company'];
-    }
-    else if(req.params.option == 'people'){
-      annotationType=['com.ibm.langware.en.Person'];
+    if (req.params.option == 'companies') {
+      var annotationType = ['com.ibm.langware.en.Company'];
+    } else if (req.params.option == 'people') {
+      var annotationType = ['com.ibm.langware.en.Person'];
     }
 
     var data = {
@@ -84,29 +71,31 @@ exports.get = function (req, res) {
       'annotations': annotationType
     };
 
-
     // extract company names or people names from tweets
     extractNames(req.params.option, data, function (err, response) {
       if (err) return res.json(err);
 
       countMentions(response, function (err, result) {
         if (err) return res.json(err);
-        console.log("RETURNED JSON: " + JSON.stringify(result));
         res.json(result);
       });
     });
   });
 };
 
-function extractNames(type, data, cb) {
 // query proper analytics service to extract company or people names from supplied tweets
-
-
+function extractNames(type, data, cb) {
   // choose correct analytics service to hit
-  var url = app.get('company_analytics_url') ? app.get('company_analytics_url') : 'http://companiestextanalyticsserviceapplication.w3.bluemix.net/rest/service/analyze'; /*app.get('analytics_url')*/;
+  var url = app.get('company_analytics_url');
   
-  if(type == 'people'){
-    url = app.get('name_analytics_url') ? app.get('name_analytics_url') : 'http://namestextanalyticsserviceapplication.w3.bluemix.net/rest/service/analyze';
+  if (type == 'people') {
+    url = app.get('name_analytics_url');
+  }
+
+  if (!url) {
+    return cb({
+      error: 'No service URL found. Make sure you have bound the correct services to your app.'
+    });
   }
 
   var options = {
@@ -149,9 +138,6 @@ function countMentions(response, cb) {
       histogram[name] = histogram[name] == null ?  1 : histogram[name] + 1;
     });
   });
-
-  console.log('Names: ' + _.keys(histogram));
-  console.log('# of Mentions: ' + _.values(histogram));
 
   cb(null, {
     labels: _.keys(histogram), 

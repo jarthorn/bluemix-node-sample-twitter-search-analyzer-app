@@ -43,8 +43,8 @@
 
 
 var request = require('request');
-var consumerKey = 'insert consumer key here';
-var consumerSecret = 'insert consumer secret here';
+var consumerKey = 'consumer key here';
+var consumerSecret = 'consumer secret here';
 var bearerToken;
 
 
@@ -103,7 +103,12 @@ exports.getResults = function (keyword, count, result_type, cb) {
 				return cb({ error: 'Status code: ' + res.statusCode });
 			}
 
-			return cb(null, JSON.parse(body));
+      var tweets = JSON.parse(body).statuses;
+      var texts = tweets.map(function(tweet) {
+        return tweet.text;
+      });
+
+			return cb(null, texts);
 		});
 	});
 };
