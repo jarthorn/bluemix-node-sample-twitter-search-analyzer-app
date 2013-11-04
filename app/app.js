@@ -41,6 +41,8 @@
 /* used. Any functionally equivalent program may be used.            */
 /*-------------------------------------------------------------------*/
 
+/*jslint node:true */
+/*global app:true */ 
 
 // module dependencies
 var http = require('http');
@@ -89,7 +91,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
   app.use(express.errorHandler());
 }
 
