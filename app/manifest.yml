@@ -11,11 +11,11 @@ applications: #Reference http://docs.cloudfoundry.com/docs/using/deploying-apps/
   services:
      ctas-tsa-node: #Identifier for CompaniesTextAnalyticsService Bound Service instance
       label: CompaniesTextAnalyticsService
-      provider: core
+      provider: jStart
       version: '0.1'
       plan: 'free'
      ntas-tsa-node: #Identifier for NamesTextAnalyticsService Bound Service instance
       label: NamesTextAnalyticsService
-      provider: core
+      provider: jStart
       version: '0.1'
       plan: 'free'
