@@ -41,48 +41,11 @@
 /* used. Any functionally equivalent program may be used.            */
 /*-------------------------------------------------------------------*/
 
+/*global app:true, twitter:true */ 
 
 var _ = require('underscore');
 var request = require('request');
 var twitter = require('../lib/twitter')
-
-exports.get = function (req, res) {
-// query twitter search API to get recent tweets related to specified keyword
-//  then send tweets through either the Name or Company Text analytics service. 
-//  once analytic service processes the tweets, do a count of the number of mentions of specific
-//  companies or names and return JSON with that information
-
-  // get twitter results
-	twitter.getResults(req.params.keyword, 100, 'recent', function (err, texts) {
-    if (err) {
-      console.log(err);
-      return res.json(err);
-    }
-
-    // check requested type of analytics to be done
-    if (req.params.option == 'companies') {
-      var annotationType = ['com.ibm.langware.en.Company'];
-    } else if (req.params.option == 'people') {
-      var annotationType = ['com.ibm.langware.en.Person'];
-    }
-
-    var data = {
-      'texts': texts, 
-      'annotations': annotationType
-    };
-
-    // extract company names or people names from tweets
-    extractNames(req.params.option, data, function (err, response) {
-      if (err) return res.json(err);
-
-      countMentions(response, function (err, result) {
-        if (err) return res.json(err);
-        res.json(result);
-      });
-    });
-  });
-};
-
 // query proper analytics service to extract company or people names from supplied tweets
 function extractNames(type, data, cb) {
   // choose correct analytics service to hit
@@ -144,3 +107,40 @@ function countMentions(response, cb) {
     response: _.values(histogram)
   });
 }
+
+exports.get = function (req, res) {
+// query twitter search API to get recent tweets related to specified keyword
+//  then send tweets through either the Name or Company Text analytics service. 
+//  once analytic service processes the tweets, do a count of the number of mentions of specific
+//  companies or names and return JSON with that information
+
+  // get twitter results
+	twitter.getResults(req.params.keyword, 100, 'recent', function (err, texts) {
+    if (err) {
+      console.log(err);
+      return res.json(err);
+    }
+
+    // check requested type of analytics to be done
+    if (req.params.option == 'companies') {
+      var annotationType = ['com.ibm.langware.en.Company'];
+    } else if (req.params.option == 'people') {
+      var annotationType = ['com.ibm.langware.en.Person'];
+    }
+
+    var data = {
+      'texts': texts, 
+      'annotations': annotationType
+    };
+
+    // extract company names or people names from tweets
+    extractNames(req.params.option, data, function (err, response) {
+      if (err) return res.json(err);
+
+      countMentions(response, function (err, result) {
+        if (err) return res.json(err);
+        res.json(result);
+      });
+    });
+  });
+};
