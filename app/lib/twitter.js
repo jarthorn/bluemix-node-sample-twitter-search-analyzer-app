@@ -52,7 +52,9 @@ function authenticate (cb) {
 // authenticates by getting bearer token from twitter using consumer key and 
 //    consumer secret supplied above. 
 
-	if (bearerToken) return cb(null, bearerToken); // return cached copy
+	if (bearerToken) {
+		return cb(null, bearerToken); // return cached copy
+	}
 
 	// store options for use during request.
 	var options = {
@@ -69,7 +71,9 @@ function authenticate (cb) {
 
 	// POST to twitter REST endpoint to get Bearer Token
 	request.post(options, function (err, res, body) {
-		if (err) return cb(err);
+		if (err) {
+			return cb(err);
+		}
 
 		bearerToken = JSON.parse(body).access_token;
 		cb(null, bearerToken);
@@ -97,9 +101,11 @@ exports.getResults = function (keyword, count, result_type, cb) {
 		};
 
 		request.get(options, function (err, res, body) {
-			if (err) return cb(err);
+			if (err) {
+				return cb(err);
+			}
 
-			if (res.statusCode != 200) {
+			if (res.statusCode !== 200) {
 				return cb({ error: 'Status code: ' + res.statusCode });
 			}
 
