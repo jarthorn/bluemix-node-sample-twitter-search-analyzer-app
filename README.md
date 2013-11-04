@@ -52,10 +52,6 @@ Just follow the instructions on the screen. You can select the default settings 
 For the app to function correctly, you must create the service instance and bind the service instance while deploying the app. The **cf push** command will ask, "Create services for application?" Answer yes, then you will be presented with a list of services. Choose Company Text analytics service and Names Text Analytics Service from this list. Below, you can see some screenshots of what this should look like when deploying from the command line.
 
 
-Here are some snapshots of how to deploy the app and create services required for the app: 
-        
-(These are to be added)
-
 After the application is deployed using **cf push**, you can check the status of the app using the following command: **cf apps**. If the status is RUNNING, you can hit the URL in the browser and see the application is running.
 
 
@@ -69,8 +65,8 @@ After the application is deployed using **cf push**, you can check the status of
 
 Here are some screenshots of what the app will look like when it is running and functioning correctly. 
 
-![image](/images/workingApp1.png)
+![image](images/workingApp1.png)
     
-![image](/images/workingApp2.png)
+![image](images/workingApp2.png)
 
 
