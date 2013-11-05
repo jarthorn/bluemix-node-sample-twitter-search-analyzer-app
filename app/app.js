@@ -41,6 +41,8 @@
 /* used. Any functionally equivalent program may be used.            */
 /*-------------------------------------------------------------------*/
 
+/*jslint regexp:false, node:true, forin:true */
+/*global app:true */ 
 
 // module dependencies
 var http = require('http');
@@ -67,10 +69,10 @@ if (process.env.VCAP_SERVICES) {
 
   for (var svcName in services) {
     if (svcName.match(/^[Cc]ompanies.*/)) {
-      app.set('company_analytics_url', services[svcName][0]['credentials']['url']); 
+      app.set('company_analytics_url', services[svcName][0].credentials.url); 
     }
     if (svcName.match(/^[Nn]ames.*/)) {
-      app.set('name_analytics_url', services[svcName][0]['credentials']['url']);
+      app.set('name_analytics_url', services[svcName][0].credentials.url);
     }
   }
 }
@@ -89,7 +91,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
   app.use(express.errorHandler());
 }
 

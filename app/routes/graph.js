@@ -45,10 +45,10 @@
 exports.get = function (req, res) {
 
 	//choose chart name depending upon option supplied in query
-	var tableTitle = (req.query.option == 'companies') ? 'Company Name' : 'Name';  
+	var tableTitle = (req.query.option === 'companies') ? 'Company Name' : 'Name';  
 
 	// choose type of warning to display based upon result option
-	var noResultsWarning = (req.query.option == 'companies') ? 'companies' : 'names';
+	var noResultsWarning = (req.query.option === 'companies') ? 'companies' : 'names';
 	
 	res.render('graph.html', {
     keyword: encodeURIComponent(req.query.keyword), 
