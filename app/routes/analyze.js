@@ -99,7 +99,7 @@ function countMentions(response, cb) {
 
     analyzed.forEach(function (result) {
       var name = result['covered-text'].toLowerCase();
-      histogram[name] = histogram[name] === null ?  1 : histogram[name] + 1;
+      histogram[name] = histogram[name] === undefined ?  1 : histogram[name] + 1;
     });
   });
 
