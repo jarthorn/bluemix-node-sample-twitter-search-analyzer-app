@@ -1,6 +1,12 @@
 # Instructions to Run and Deploy the Twitter Search Analyzer on CloudFoundry #
 
-## Prerequisites: ##
+## Overview of the app ##
+
+This is a NodeJS app that uses the following cloud services:
+-   Company Text Analytics Service
+-   Name Text Analytics Service
+
+## Prerequisites ##
 Before we begin, we first need to install the command line tool that will be used to upload and manage your application. Cloud Foundry uses a tool called [**cf**](https://github.com/cloudfoundry/cf). This tool is written in Ruby, so you must have Ruby installed. If you are running on Windows, you can install Ruby from [this](http://rubyinstaller.org/downloads/) website. 
 
 For Linux systems, consult your documentation for how to install the **ruby** package - for Ubuntu the command:
@@ -16,12 +22,6 @@ Once Ruby is installed, cf can be installed by using the **gem install** command
 The source for this app is at GitHub so, for example, if you are using the command line you can clone the repository like this:
 
         git clone https://github.com/ibmjstart/bluemix-node-sample-twitter-search-analyzer-app.git
-
-## Overview of the app ##
-
-This is a NodeJS app that uses the following cloud services:
--   Company Text Analytics Service
--   Name Text Analytics Service
 
 ## External and Public APIs ##
 
