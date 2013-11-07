@@ -11,17 +11,17 @@ Before we begin, we first need to install the command line tool that will be use
 
 For Linux systems, consult your documentation for how to install the **ruby** package - for Ubuntu the command:
 
-        apt-get install ruby 
+	apt-get install ruby 
 
 should work for you.
 
 Once Ruby is installed, cf can be installed by using the **gem install** command:
         
-        gem install cf
+	gem install cf
 
 The source for this app is at GitHub so, for example, if you are using the command line you can clone the repository like this:
 
-        git clone https://github.com/ibmjstart/bluemix-node-sample-twitter-search-analyzer-app.git
+	git clone https://github.com/ibmjstart/bluemix-node-sample-twitter-search-analyzer-app.git
 
 ## External and Public APIs ##
 
@@ -41,7 +41,7 @@ The graph is generated using the Chart.js library, which is under MIT license. T
 
 Now that you have included the twitter keys and tokens, you are all set to deploy the app. In the terminal, go in the directory of the app. You can directly deploy/push the app using push command:
 
-        cf push --command="node app.js"
+	cf push --command="node app.js"
 
 (Note that you must add the flag **--command="node app.js"** in order for the app to start correctly)
 
