@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.johna</groupId>
+	<artifactId>com.johna.bluemix.node.twitter.sample</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<plugin>
+		<groupId>org.cloudfoundry</groupId>
+		<artifactId>cf-maven-plugin</artifactId>
+		<version>1.0.0.M1</version>
+	</plugin>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.cloudfoundry</groupId>
+				<artifactId>cf-maven-plugin</artifactId>
+				<version>1.0.0.M1</version>
+				<configuration>
+					<server>mycloudfoundry-instance</server>
+					<target>http://api.cloudfoundry.com</target>
+					<url>hello-node-maven.cloudfoundry.com</url>
+					<memory>256</memory>
+				</configuration>
+                </plugin>
+            </plugins>
+        </build>
+</project>
