@@ -3,24 +3,19 @@
 	<groupId>com.johna</groupId>
 	<artifactId>com.johna.bluemix.node.twitter.sample</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<plugin>
-		<groupId>org.cloudfoundry</groupId>
-		<artifactId>cf-maven-plugin</artifactId>
-		<version>1.0.0.M1</version>
-	</plugin>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.cloudfoundry</groupId>
 				<artifactId>cf-maven-plugin</artifactId>
-				<version>1.0.0.M1</version>
+				<version>1.0.0</version>
 				<configuration>
 					<server>mycloudfoundry-instance</server>
-					<target>http://api.cloudfoundry.com</target>
-					<url>hello-node-maven.cloudfoundry.com</url>
+					<target>http://api.ng.bluemix.net</target>
+					<url>http://twitterinfluenceanalyzernoded797c.ng.bluemix.net/</url>
 					<memory>256</memory>
-				</configuration>
-                </plugin>
-            </plugins>
-        </build>
+				</configuration>			
+  			</plugin>
+		</plugins>
+	</build>
 </project>
