@@ -47,5 +47,5 @@
  * GET home page.
  */
 exports.index = function (req, res) {
-  	res.render('index.html', {Title: 'Twitter Search Analyzer'});
+  	res.render('index.html', {Title: 'Twitter Search Oracle'});
 };
