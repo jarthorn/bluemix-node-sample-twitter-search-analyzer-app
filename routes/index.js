@@ -1,3 +1,4 @@
+/*global exports */
 /*-------------------------------------------------------------------*/
 /*                                                                   */
 /* Copyright IBM Corp. 2013 All Rights Reserved                      */
@@ -47,5 +48,5 @@
  * GET home page.
  */
 exports.index = function (req, res) {
-  	res.render('index.html', {Title: 'Twitter Search Oracle'});
+  	res.render('index.html', {Title: 'Twitter Search Utility'});
 };
